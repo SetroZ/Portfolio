@@ -18,7 +18,6 @@ span {
   color: inherit;
 }
 
-
 .fade {
   -webkit-mask-image: -webkit-gradient(
     linear,
@@ -46,4 +45,9 @@ span {
   background-image: url('/herobg.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+.vertical-timeline-element-date {
+  font-weight:bold !important ;
+  font-size: 1.2rem !important;
+  top:4px !important;
 }

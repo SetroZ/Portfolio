@@ -1,33 +1,33 @@
 'use client'
-import { experiences, experiencesType } from '@/data'
+import { experiences, experienceType } from '@/data'
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component'
 import Title from './Title'
-
 import 'react-vertical-timeline-component/style.min.css'
 import Image from 'next/image'
 
-const ExperienceCard = ({ experience }: { experience: experiencesType }) => {
+const ExperienceCard = ({ experience }: { experience: experienceType }) => {
   return (
     <VerticalTimelineElement
       visible={true}
       contentStyle={{
         background: '#18181b',
         color: experience.color,
+
       }}
       contentArrowStyle={{ borderRight: '15px solid ' + experience.color }}
       date={experience.date}
-      iconStyle={{ background: experience.color }}
+      iconStyle={{ background: '#d4d4d4' }}
       icon={
         <div className='flex justify-center items-center w-full h-full '>
           <Image
-            width={50}
             height={50}
-            src={experience.logo}
+            width={50}
+            src={experience.pic}
             alt={experience.title}
-            className=' object-contain -z-10'
+            className='object-contain -z-10'
           />
         </div>
       }
@@ -44,7 +44,7 @@ const ExperienceCard = ({ experience }: { experience: experiencesType }) => {
           <a
             href={experience.link}
             target='_blank'
-            className={` whitespace-nowrap underline text-3xl items-center font-bold`}
+            className={`  underline text-3xl items-center font-bold`}
             style={{ color: experience.color }}
           >
             {experience.title}
@@ -79,7 +79,7 @@ const Experience = () => {
       <div className='mt-20 '>
         <VerticalTimeline>
           {experiences.map((experience) => (
-            <ExperienceCard key={`experience-s`} experience={experience} />
+            <ExperienceCard key={experience.color} experience={experience} />
           ))}
         </VerticalTimeline>
       </div>

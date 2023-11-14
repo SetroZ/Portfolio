@@ -11,7 +11,7 @@ interface formType {
   message: string
 }
 interface formStates {
-  [key: string] : boolean
+  [key: string]: boolean
   name: boolean
   email: boolean
   title: boolean
@@ -28,7 +28,7 @@ const Error = ({ message, state }: { message: string; state: boolean }) => {
     </p>
   )
 }
-
+let first = 0
 const Contact = () => {
   const [form, setForm] = useState<formType>({
     name: '',
@@ -42,7 +42,10 @@ const Contact = () => {
     title: true,
     message: true,
   })
-  const validate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const validate = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    first = 1
     const name = e.target.name
     if (name == 'email') {
       setCurrentForm((prevState) => {
@@ -60,7 +63,9 @@ const Contact = () => {
       })
     }
   }
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     validate(e)
     setForm((prevForm) => {
       return {
@@ -70,26 +75,34 @@ const Contact = () => {
     })
   }
   const handleSubmit = async (e: React.FormEvent) => {
-
     e.preventDefault()
     let checked = 0
     for (let key in currentForm) {
-      currentForm[key] ? checked++ : ''
+      currentForm[key] == true && first != 0
+        ? checked++
+        : setCurrentForm((prevState) => {
+            return {
+              ...prevState,
+              [key]: false,
+            }
+          })
     }
+    console.log(checked)
     if (checked == 4) {
       const response = await fetch('http://localhost:3000/api/email', {
         method: 'POST',
         body: JSON.stringify(form),
       })
+      const data = await response.json()
     }
   }
 
   return (
-    <div id='Contact' className='mt-20  lg:w-[50%]  w-[75%]'>
+    <div id='Contact'  className='mt-20 scrool  lg:w-[50%]  w-[75%]'>
       <Title title='Contact me' subTitle="Let's Connect" />
       <form
         onSubmit={handleSubmit}
-        className='mt-12 p-8 rounded-lg bg-zinc-900 flex flex-col gap-8'
+        className='mt-12 p-8  rounded-lg bg-zinc-900 flex flex-col gap-8'
       >
         <label className='flex flex-col'>
           <span className='text-white font-medium mb-4'>Your Name</span>
@@ -112,12 +125,11 @@ const Contact = () => {
         <label className='flex flex-col'>
           <span className='text-white font-medium mb-4'>Your email</span>
           <input
-            type='email'
             name='email'
             onChange={handleChange}
             value={form.email}
             placeholder='Email'
-            className={`bg-gray-200  py-4 px-6 placeholder:text-secondary border-opacity-0 border-2     text-gray-800 rounded-lg outline-none ${
+            className={`bg-gray-200   py-4 px-6 placeholder:text-secondary border-opacity-0 border-2     text-gray-800 rounded-lg outline-none ${
               currentForm.email ? '' : 'border-opacity-100 border-red-500'
             }  `}
           />
@@ -155,8 +167,11 @@ const Contact = () => {
 
         <button
           type='submit'
-  
-          className='bg-purple-800 hover:bg-purple-900 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+          className='button w-40 p-2 rounded-md  text-xl bg-purple-500  cursor-pointer select-none
+          active:translate-y-2  active:[box-shadow:0_0px_0_0_#9333ea,0_0px_0_0_#9333ea]
+          active:border-b-[0px]
+          transition-all duration-150 [box-shadow:0_8px_0_0_#9333ea,0_13px_0_0_#9333ea]
+          border-[1px] border-purple-500'
         >
           Send
         </button>

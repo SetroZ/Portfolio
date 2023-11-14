@@ -9,7 +9,7 @@ const Stack = () => {
 
         <div
           className='flex flex-row gap-1 mt-4 w-[75%] flex-wrap 
-      justify-center bg-zinc-900 rounded-lg shadow-xl shadow-zinc-600  border-zinc-800 border-solid border-4'
+      justify-center bg-zinc-900 rounded-lg shadow-xl shadow-zinc-600 py-4 border-zinc-800 border-solid border-4'
         >
           {techStack.map((ball) => (
             <BallCanvas key={ball} imgUrl={ball} color='#ffff' />

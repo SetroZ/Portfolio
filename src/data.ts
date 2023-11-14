@@ -1,5 +1,15 @@
 const path = '/tech/'
 
+export type experienceType = {
+  title: string
+  subTitle: string
+  desc: string[]
+  color: string
+  link: string
+  date: string
+  pic: string
+}
+
 export const techStack = [
   path + 'css.png',
   path + 'docker.png',
@@ -14,9 +24,11 @@ export const techStack = [
   path + 'typescript.png',
   path + 'lua.png',
   path + 'git.png',
+  path + 'python.svg',
+  path + 'R.svg',
 ]
 
-export const experiences = [
+export const experiences: experienceType[] = [
   {
     title: 'FreeLance Programmer',
     subTitle: 'Roblox (Lua)',
@@ -30,6 +42,7 @@ export const experiences = [
     color: '#3b82f6',
     link: 'https://devforum.roblox.com/t/open-advanced-scripter-ui-designer-usd-only-3-years-experience',
     date: '2021-2023',
+    pic: path + 'lua.png',
   },
   {
     title: 'Wesley ChatBot',
@@ -43,6 +56,7 @@ export const experiences = [
     color: '#a855f7',
     link: 'https://wesley-chatbot.vercel.app',
     date: '9/2023',
+    pic: '/wesley.png',
   },
   {
     title: 'Massimo',
@@ -53,7 +67,7 @@ export const experiences = [
       'Implemented user authentication and data saving allowing for customer personalized experiences.',
       'integrated third-party payment processing capabilities.',
     ],
-    pic: '',
+    pic: '/M.png',
     link: 'https://github.com/SetroZ/resturant',
     color: '#dc2626',
     date: '8/2023',
@@ -66,10 +80,20 @@ export const experiences = [
       'Developed essential mechanics like collision detection, scoring, and player movement.',
     ],
     link: 'https://github.com/SetroZ/Space-Invader',
-    pic: '',
+    pic: '/ufo.png',
     color: '#eab308',
     date: '2020',
   },
+  {
+    title: 'Discord Bot',
+    subTitle: 'Personal Project',
+    desc: [
+      'Developed a Discord bot for managing server tasks, including user kicks, bans, and message clearing.',
+      'Implemented features like inspirational quotes and rule displays.',
+    ],
+    link: 'https://github.com/SetroZ/Bot',
+    pic: '/discord.svg',
+    color: '#7289DA',
+    date: '2020',
+  },
 ]
-
-export type experiencesType = typeof experiences

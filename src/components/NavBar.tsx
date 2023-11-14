@@ -38,7 +38,9 @@ const NavBar = () => {
       className={`flex 
    flex-row justify-between items-center 
      fixed ${
-       scrolled ? 'bg-[#070707] border-white border-solid border-b-[1px] ' : 'bg-transparent'
+       scrolled
+         ? 'bg-[#070707] border-white border-solid border-b-[1px] '
+         : 'bg-transparent'
      } z-10     md:px-8  px-3 pb-2 pt-8  w-[100vw]   `}
     >
       <div className='flex flex-row gap-4 items-center'>
@@ -66,6 +68,7 @@ const NavBar = () => {
       </div>
       <div className='flex flex-row gap-3'>
         <a
+          title='LinkedIn'
           href='https://www.linkedin.com/in/youseph-elsayed-353462295/'
           target='_blank'
           rel='noopener noreferrer'
@@ -80,6 +83,7 @@ const NavBar = () => {
           />
         </a>
         <a
+          title='GitHub'
           href='https://github.com/SetroZ'
           target='_blank'
           rel='noopener noreferrer'
@@ -119,7 +123,9 @@ const NavBar = () => {
               key={name}
               className={`${
                 selected == name ? 'text-xl' : 'text-gray-400'
-              } hover:text-2xl transition-all duration-200 ${toggle? 'cursor-pointer' : 'cursor-default'}`}
+              } hover:text-2xl transition-all duration-200 ${
+                toggle ? 'cursor-pointer' : 'cursor-default'
+              }`}
             >
               {name}
             </a>
