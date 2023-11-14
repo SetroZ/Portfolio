@@ -128,12 +128,35 @@ const Contact = () => {
   }
 
   return (
-    <div id='Contact' className='   lg:w-[50%]  w-[75%]'>
-      <Title title='Contact me' subTitle="Let's Connect" />
+    <div
+      id='Contact'
+      className=' flex flex-col justify-center   lg:w-[50%]  w-[75%]'
+    >
+      <Title title='' subTitle="Let's Connect" />
+      <a
+        className='text-center text-xl font-bold mt-5'
+        href='mailto:joemosabry@gmail.com'
+      >
+        <button
+          type='submit'
+          className='button w-60 p-2 rounded-md  text-3xl bg-purple-500  cursor-pointer select-none
+          active:translate-y-2  active:[box-shadow:0_0px_0_0_#9333ea,0_0px_0_0_#9333ea]
+          active:border-b-[0px]
+          transition-all duration-150 [box-shadow:0_8px_0_0_#9333ea,0_13px_0_0_#9333ea]
+          border-[1px] border-purple-500'
+        >
+          Email Me
+        </button>
+      </a>
       <form
         onSubmit={handleSubmit}
-        className='mt-12 p-8  rounded-lg bg-zinc-900 flex flex-col gap-8'
+        className=' relative mt-12 p-8   rounded-lg bg-zinc-900 flex flex-col gap-8 overflow'
       >
+        <div className=' w-[100%] h-[100%] flex justify-center items-center  bg-gray-900 m-[-30px]  absolute opacity-70 '>
+          <p className='text-4xl tracking-wide leading-loose uppercase font-bold text-red-500 text-center'>
+            Currently off Until I get a domain
+          </p>
+        </div>
         <label className='flex flex-col'>
           <span className='text-white font-medium mb-4'>Your Name</span>
           <input
