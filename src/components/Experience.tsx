@@ -74,8 +74,8 @@ const ExperienceCard = ({ experience }: { experience: experienceType }) => {
 
 const Experience = () => {
   return (
-    <div className='w-full mt-20' id='Projects'>
-      <Title subTitle='A brief overview of my work' title='Past Expereince' />
+    <div className='w-full ' >
+      <Title id='Projects' subTitle='A brief overview of my work' title='Past Experience' />
       <div className='mt-20 '>
         <VerticalTimeline>
           {experiences.map((experience) => (

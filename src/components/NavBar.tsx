@@ -52,14 +52,14 @@ const NavBar = () => {
           alt='logo'
         />
       </div>
-      <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-lg  '>
+      <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-2xl  '>
         {Buttons.map((name) => (
           <a
             onClick={() => setSelected(name)}
             href={`#${name}`}
             key={name}
             className={`${
-              selected == name ? 'text-2xl' : 'text-gray-400'
+              selected == name ? 'text-3xl' : 'text-gray-400'
             } hover:text-3xl transition-all duration-200 `}
           >
             {name}

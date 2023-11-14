@@ -11,15 +11,14 @@ const AboutMe = () => {
       justify-center rounded-lg shadow-md shadow-zinc-600  border-zinc-800 border-solid border-2 border-t-0'
       >
         <p className='text-gray-400 text-center p-5 text-xl '>
-          As an aspiring Computer Science graduate at UWA, I am Vetro—a
-          dedicated Freelance Programmer and experienced leader in hackathon
-          projects. Beyond coding, passionate about weightlifting and
-          chess, and  fluent in both English and Arabic. My commitment to
-          continuous learning is reflected in the creative projects I undertake,
-          showcasing my dedication to the ever-evolving world of technology
+          I am Vetro—a dedicated Freelance Programmer and experienced FullStack
+          web developer. My commitment to continuous learning is reflected in
+          the creative projects I create, showcasing my dedication to the
+          ever-evolving world of technology. Beyond programming, I am passionate
+          about weightlifting and chess, and fluent in both English and Arabic.
+          Take a look at my website and let&apos;s talk!
         </p>
       </div>
-
     </div>
   )
 }

@@ -42,7 +42,9 @@ const Contact = () => {
     title: true,
     message: true,
   })
-  const [send, setSend] = useState<'Sent' | 'Sending...' | 'Send' | 'Error'>('Send')
+  const [send, setSend] = useState<'Sent' | 'Sending...' | 'Send' | 'Error'>(
+    'Send'
+  )
 
   const validate = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -126,7 +128,7 @@ const Contact = () => {
   }
 
   return (
-    <div id='Contact' className='mt-20 scrool  lg:w-[50%]  w-[75%]'>
+    <div id='Contact' className='   lg:w-[50%]  w-[75%]'>
       <Title title='Contact me' subTitle="Let's Connect" />
       <form
         onSubmit={handleSubmit}

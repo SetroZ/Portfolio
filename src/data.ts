@@ -79,7 +79,7 @@ export const experiences: experienceType[] = [
       'Created a 2D Python game using Pygame',
       'Developed essential mechanics like collision detection, scoring, and player movement.',
     ],
-    link: 'https://github.com/SetroZ/Space-Invader',
+    link: 'https://setroz.github.io/Space-Invader/',
     pic: '/ufo.png',
     color: '#eab308',
     date: '2020',
