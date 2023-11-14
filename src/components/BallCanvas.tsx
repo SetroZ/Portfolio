@@ -10,12 +10,12 @@ import {
 } from '@react-three/drei'
 
 import CanvasLoader from './CanvasLoader'
-const Ball = ({ imgUrl, color }:{imgUrl:string,color:string}) => {
+const Ball = ({ imgUrl, color }: { imgUrl: string; color: string }) => {
   const [decal] = useTexture([imgUrl])
 
   return (
-    <Float speed={1} rotationIntensity={1} floatIntensity={1}>
-      <ambientLight intensity={0.25} />
+    <Float speed={1} rotationIntensity={1} floatIntensity={4}>
+      <ambientLight intensity={1} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
@@ -30,22 +30,23 @@ const Ball = ({ imgUrl, color }:{imgUrl:string,color:string}) => {
           rotation={[2 * Math.PI, 0, 6.25]}
           scale={1}
           map={decal}
-          flatShading
         />
       </mesh>
     </Float>
   )
 }
 
-const BallCanvas = ({imgUrl, color}:{imgUrl:string, color:string}) => {
+const BallCanvas = ({ imgUrl, color='#dddddd' }: { imgUrl: string; color?: string }) => {
   return (
-    <Canvas dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-      <OrbitControls enableZoom={false} />
+    <div className=' w-40'>
+      <Canvas dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+        <OrbitControls enableZoom={false} />
 
-      <Ball imgUrl={'/logo.jpg'} color={color} />
+        <Ball imgUrl={imgUrl} color={color} />
 
-      <Preload all />
-    </Canvas>
+        <Preload all />
+      </Canvas>
+    </div>
   )
 }
 

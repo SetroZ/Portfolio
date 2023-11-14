@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-simple-typewriter": "^5.0.1",
     "react-tilt": "^1.0.2",
-    "react-vertical-timeline-component": "^3.6.0"
+    "react-vertical-timeline-component": "^3.6.0",
+    "resend": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

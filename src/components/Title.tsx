@@ -3,7 +3,7 @@ const Title = ({
   title,
   subTitle,
 }: {
-  id: string
+  id?: string
   title: String
   subTitle: string
 }) => {

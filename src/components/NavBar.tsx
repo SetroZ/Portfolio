@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-const Buttons = ['Home', 'Stack', 'Projects'] as const
+const Buttons = ['Home', 'Projects', 'Stack', 'Contact'] as const
 type ButtonType = (typeof Buttons)[number] // 'Home' | 'Stack' | 'Projects'
-
+import BallCanvas from './BallCanvas'
 const NavBar = () => {
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState<ButtonType>('Home')
@@ -12,7 +12,7 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
-      if (scrollTop > 100) {
+      if (scrollTop > 0) {
         setScrolled(true)
       } else {
         setScrolled(false)
@@ -27,14 +27,18 @@ const NavBar = () => {
     e: React.MouseEvent<HTMLAnchorElement>,
     name: ButtonType
   ) => {
-    setSelected(name)
+    if (toggle == true) {
+      setSelected(name)
+    } else {
+      e.preventDefault()
+    }
   }
   return (
     <nav
       className={`flex 
    flex-row justify-between items-center 
      fixed ${
-       scrolled ? 'bg-black ' : 'bg-transparent'
+       scrolled ? 'bg-[#070707] border-white border-solid border-b-[1px] ' : 'bg-transparent'
      } z-10     md:px-8  px-3 pb-2 pt-8  w-[100vw]   `}
     >
       <div className='flex flex-row gap-4 items-center'>
@@ -49,7 +53,7 @@ const NavBar = () => {
       <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-lg  '>
         {Buttons.map((name) => (
           <a
-            onClick={(e) => handleClick(e, name)}
+            onClick={() => setSelected(name)}
             href={`#${name}`}
             key={name}
             className={`${
@@ -62,7 +66,7 @@ const NavBar = () => {
       </div>
       <div className='flex flex-row gap-3'>
         <a
-          href='https://github.com/SetroZ'
+          href='https://www.linkedin.com/in/youseph-elsayed-353462295/'
           target='_blank'
           rel='noopener noreferrer'
           className='border-[1px] border-white rounded-full p-2'
@@ -76,7 +80,7 @@ const NavBar = () => {
           />
         </a>
         <a
-          href='https://www.linkedin.com/in/youseph-elsayed-353462295/'
+          href='https://github.com/SetroZ'
           target='_blank'
           rel='noopener noreferrer'
         >
@@ -102,20 +106,20 @@ const NavBar = () => {
         />
         <div
           className={`${
-            toggle ? 'opacity-100' : ' opacity-0'
-          }   flex flex-col gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3 right-3 transition-all  duration-500 `}
+            toggle ? 'opacity-100' : 'opacity-0 cursor-default'
+          }   flex flex-col gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3  transition-all  duration-500 `}
         >
           {Buttons.map((name) => (
             <a
               onClick={(e) => {
                 handleClick(e, name)
-                setToggle(!toggle)
+                setToggle(false)
               }}
               href={`#${name}`}
               key={name}
               className={`${
                 selected == name ? 'text-xl' : 'text-gray-400'
-              } hover:text-2xl transition-all duration-200 `}
+              } hover:text-2xl transition-all duration-200 ${toggle? 'cursor-pointer' : 'cursor-default'}`}
             >
               {name}
             </a>
