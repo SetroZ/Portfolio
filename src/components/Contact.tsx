@@ -17,7 +17,7 @@ interface formStates {
   title: boolean
   message: boolean
 }
-const Error = ({ message, state }: { message: string; state: boolean }) => {
+const ErrorComp = ({ message, state }: { message: string; state: boolean }) => {
   return (
     <p
       className={`text-red-500  font-semibold text-md  ${
@@ -42,6 +42,8 @@ const Contact = () => {
     title: true,
     message: true,
   })
+  const [send, setSend] = useState<'Sent' | 'Sending...' | 'Send' | 'Error'>('Send')
+
   const validate = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -76,29 +78,55 @@ const Contact = () => {
   }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Assuming first and form are state variables
     let checked = 0
     for (let key in currentForm) {
-      currentForm[key] == true && first != 0
-        ? checked++
-        : setCurrentForm((prevState) => {
-            return {
-              ...prevState,
-              [key]: false,
-            }
-          })
+      if (currentForm[key] === true && first !== 0) {
+        checked++
+      } else {
+        // Use a functional update to ensure the correct prevState
+        setCurrentForm((prevState) => {
+          return {
+            ...prevState,
+            [key]: false,
+          }
+        })
+      }
     }
+
     console.log(checked)
-    if (checked == 4) {
-      const response = await fetch('http://localhost:3000/api/email', {
-        method: 'POST',
-        body: JSON.stringify(form),
-      })
-      const data = await response.json()
+
+    if (checked === 4) {
+      setSend('Sending...')
+
+      try {
+        const response = await fetch('http://localhost:3000/api/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to send data')
+        }
+
+        const data = await response.json()
+
+        // Use setTimeout instead of setInterval for a single delay
+        setTimeout(() => setSend('Sent'), 1000)
+      } catch (error) {
+        setSend('Error')
+        console.error('Error sending data:', error) // Reset the button text if there's an error
+      }
+      setTimeout(() => setSend('Send'), 5000)
     }
   }
 
   return (
-    <div id='Contact'  className='mt-20 scrool  lg:w-[50%]  w-[75%]'>
+    <div id='Contact' className='mt-20 scrool  lg:w-[50%]  w-[75%]'>
       <Title title='Contact me' subTitle="Let's Connect" />
       <form
         onSubmit={handleSubmit}
@@ -117,7 +145,7 @@ const Contact = () => {
             } font-medium`}
           />
 
-          <Error
+          <ErrorComp
             message="Your name can't be that short right?"
             state={currentForm.name}
           />
@@ -133,7 +161,7 @@ const Contact = () => {
               currentForm.email ? '' : 'border-opacity-100 border-red-500'
             }  `}
           />
-          <Error message='Are you sure?' state={currentForm.email} />
+          <ErrorComp message='Are you sure?' state={currentForm.email} />
         </label>
         <label className='flex flex-col'>
           <span className='text-white font-medium mb-4'>Title</span>
@@ -146,7 +174,10 @@ const Contact = () => {
               currentForm.title ? '' : 'border-2 border-red-500'
             }   font-medium`}
           />
-          <Error message='perhaps a little more?' state={currentForm.title} />
+          <ErrorComp
+            message='perhaps a little more?'
+            state={currentForm.title}
+          />
         </label>
         <label className='flex flex-col'>
           <span className='text-white font-medium mb-4'>Message</span>
@@ -162,7 +193,10 @@ const Contact = () => {
             } outline-none px-6  text-white rounded-lg  font-medium`}
           />
 
-          <Error message='perhaps a little more?' state={currentForm.message} />
+          <ErrorComp
+            message='perhaps a little more?'
+            state={currentForm.message}
+          />
         </label>
 
         <button
@@ -173,7 +207,7 @@ const Contact = () => {
           transition-all duration-150 [box-shadow:0_8px_0_0_#9333ea,0_13px_0_0_#9333ea]
           border-[1px] border-purple-500'
         >
-          Send
+          {send}
         </button>
       </form>
     </div>
