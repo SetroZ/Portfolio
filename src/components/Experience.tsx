@@ -49,6 +49,7 @@ const ExperienceCard = ({ experience }: { experience: experienceType }) => {
           >
             {experience.title}
           </a>
+          
         </div>
         <p
           className={`  text-secondary font-semibold text-zinc-400`}
