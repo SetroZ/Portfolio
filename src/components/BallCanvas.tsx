@@ -36,13 +36,21 @@ const Ball = ({ imgUrl, color }: { imgUrl: string; color: string }) => {
   )
 }
 
-const BallCanvas = ({ imgUrl, color='#dddddd' }: { imgUrl: string; color?: string }) => {
+const BallCanvas = ({
+  imgUrl,
+  color = '#dddddd',
+}: {
+  imgUrl: string
+  color?: string
+}) => {
   return (
     <div className=' w-40'>
       <Canvas dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
         <OrbitControls enableZoom={false} />
-
-        <Ball imgUrl={imgUrl} color={color} />
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls enableZoom={false} />
+          <Ball imgUrl={imgUrl} color={color} />
+        </Suspense>
 
         <Preload all />
       </Canvas>
