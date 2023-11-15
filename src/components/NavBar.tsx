@@ -75,7 +75,7 @@ const NavBar = () => {
           className='border-[1px] border-white rounded-full p-2'
         >
           <Image
-            className='hover:w-[25px] '
+            className='hover:w-[25px] transition-all '
             src='/logos/linkedIn.svg'
             width={20}
             height={20}
@@ -89,7 +89,7 @@ const NavBar = () => {
           rel='noopener noreferrer'
         >
           <Image
-            className='hover:w-[40px]'
+            className='hover:w-[40px] transition-all  '
             src='/logos/gitHub.png'
             width={35}
             height={35}
@@ -102,7 +102,7 @@ const NavBar = () => {
           onClick={() => setToggle(!toggle)}
           className={`invert  ${
             toggle ? 'rotate-[270deg]' : 'f'
-          } rotate-[189deg] transition-all  duration-300  cursor-pointer `}
+          } rotate-[189deg] transition-all  duration-300  cursor-pointer hover:w-[45px] `}
           src='./sidebar.svg'
           width={40}
           height={40}
@@ -111,7 +111,7 @@ const NavBar = () => {
         <div
           className={`${
             toggle ? 'opacity-100' : 'opacity-0 cursor-default'
-          }   flex flex-col gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3  transition-all  duration-500 `}
+          }   flex flex-col justify-center items-center gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3  transition-all  duration-500 `}
         >
           {Buttons.map((name) => (
             <a

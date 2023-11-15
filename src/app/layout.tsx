@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${poppins.className} scroll-smooth`}>
-      <body className={`$ w-full h-full relative  `}>
+      <body className='w-full h-full relative'>
         <NavBar />
 
         <StarsCanvas />

@@ -152,7 +152,7 @@ const Contact = () => {
         onSubmit={handleSubmit}
         className=' relative mt-12 p-8   rounded-lg bg-zinc-900 flex flex-col gap-8 overflow'
       >
-        <div className=' w-[100%] h-[100%] flex justify-center items-center  bg-gray-900 m-[-30px]  absolute opacity-70 '>
+        <div className=' w-[100%] h-[100%] flex justify-center items-center  bg-zinc-900 m-[-30px]  absolute opacity-80 '>
           <p className='text-4xl tracking-wide leading-loose uppercase font-bold text-red-500 text-center'>
             Currently off Until I get a domain
           </p>
