@@ -13,19 +13,18 @@ export type experienceType = {
 export const techStack = [
   path + 'css.png',
   path + 'docker.png',
-  path + 'figma.png',
+
   path + 'html.png',
   path + 'mongodb.png',
   path + 'nextjs.png',
-  path + 'nodejs.png',
+
   path + 'psql.png',
   path + 'reactjs.png',
   path + 'tailwind.png',
   path + 'typescript.png',
   path + 'lua.png',
   path + 'git.png',
-  path + 'python.svg',
-  path + 'R.svg',
+  path + 'python.svg'
 ]
 
 export const experiences: experienceType[] = [
