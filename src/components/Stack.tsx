@@ -12,7 +12,7 @@ const Stack = () => {
       justify-center bg-zinc-900 rounded-lg shadow-xl shadow-zinc-600 py-4 border-zinc-800 border-solid border-4'
         >
           {techStack.map((ball) => (
-            <BallCanvas key={ball} imgUrl={ball} color='#ffff' />
+            <BallCanvas key={ball} imgUrl={ball} color='#FFFFFF' />
           ))}
         </div>
       </div>
