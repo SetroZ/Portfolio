@@ -12,6 +12,7 @@
 }
 html {
   background-color: #070707;
+  scroll-behavior: smooth !important;
 }
 span {
   color: inherit;

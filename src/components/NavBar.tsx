@@ -1,11 +1,15 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSearchParams, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 const Buttons = ['Home', 'Experience', 'Stack', 'Contact', 'Blogs'] as const
 type ButtonType = (typeof Buttons)[number] // 'Home' | 'Stack' | 'Projects'
 import BallCanvas from './BallCanvas'
 const NavBar = () => {
+  const router = useRouter()
+  const pathname = usePathname()
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState<ButtonType>('Home')
   const [scrolled, setScrolled] = useState(false)
@@ -24,14 +28,25 @@ const NavBar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (pathname.length>0) {
+      router.push(window.location.href)
+    }
+
+    // ...
+  }, [pathname])
+
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     name: ButtonType
   ) => {
-    if (toggle == true) {
-      setSelected(name)
+    setSelected(name)
+    e.preventDefault()
+    if (name == 'Blogs') {
+      router.push('/blogs')
     } else {
-      e.preventDefault()
+      router.replace(`/#${name}`)
     }
   }
   return (
@@ -55,16 +70,18 @@ const NavBar = () => {
       </div>
       <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-2xl  '>
         {Buttons.map((name) => (
-          <a
-            onClick={() => setSelected(name)}
-            href={`#${name}`}
+          <Link
+            onClick={(e) => {
+              handleClick(e, name)
+            }}
+            href={''}
             key={name}
             className={`${
               selected == name ? 'text-3xl' : 'text-gray-400'
             } hover:text-3xl transition-all duration-200 `}
           >
             {name}
-          </a>
+          </Link>
         ))}
       </div>
       <div className='flex flex-row gap-3'>
@@ -120,7 +137,7 @@ const NavBar = () => {
                 handleClick(e, name)
                 setToggle(false)
               }}
-              href={`#${name}`}
+              href={``}
               key={name}
               className={`${
                 selected == name ? 'text-xl' : 'text-gray-400'

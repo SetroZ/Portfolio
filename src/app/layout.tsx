@@ -21,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en' className={`${poppins.className} scroll-smooth`}>
+    <html lang='en' className={`${poppins.className} `}>
       <body className='w-full h-full relative'>
         <NavBar />
 
-        <StarsCanvas />
+
         {children}
       </body>
     </html>
