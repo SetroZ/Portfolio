@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Title from '../../components/Title'
+import Link from 'next/link'
 const rEmail =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
@@ -128,12 +129,9 @@ const Contact = () => {
   }
 
   return (
-    <div
-      id='Contact'
-      className=' flex flex-col justify-center   lg:w-[50%]  w-[75%]'
-    >
-      <Title title='' subTitle="Let's Connect" />
-      <a
+    <div className=' flex flex-col justify-center   lg:w-[50%]  w-[75%]'>
+      <Title title='Contact me' id='Contact' subTitle="Let's Connect" />
+      <Link
         className='text-center text-xl font-bold mt-5'
         href='mailto:joemosabry@gmail.com'
       >
@@ -147,7 +145,7 @@ const Contact = () => {
         >
           Email Me
         </button>
-      </a>
+      </Link>
       <form
         onSubmit={handleSubmit}
         className=' relative mt-12 p-8   rounded-lg bg-zinc-900 flex flex-col gap-8 overflow'

@@ -1,4 +1,5 @@
  const blogId = ({ params }: { params: { id: string } }) => {
+    
 
 }
 

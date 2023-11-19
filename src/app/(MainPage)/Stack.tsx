@@ -4,7 +4,6 @@ import BallCanvas from '../../components/BallCanvas'
 const Stack = () => {
   return (
     <div className=' flex  flex-col'>
-      <a></a>
       <Title id='Stack' subTitle='Code, Connect, Conquer' title='The Stack' />
       <div className='flex justify-center'>
         <div

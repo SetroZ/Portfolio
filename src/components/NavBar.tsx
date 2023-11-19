@@ -1,7 +1,8 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
-const Buttons = ['Home', 'Projects', 'Stack', 'Contact'] as const
+const Buttons = ['Home', 'Experience', 'Stack', 'Contact', 'Blogs'] as const
 type ButtonType = (typeof Buttons)[number] // 'Home' | 'Stack' | 'Projects'
 import BallCanvas from './BallCanvas'
 const NavBar = () => {
@@ -67,7 +68,7 @@ const NavBar = () => {
         ))}
       </div>
       <div className='flex flex-row gap-3'>
-        <a
+        <Link
           title='LinkedIn'
           href='https://www.linkedin.com/in/youseph-elsayed-353462295/'
           target='_blank'
@@ -81,8 +82,8 @@ const NavBar = () => {
             height={20}
             alt='linkedIn'
           />
-        </a>
-        <a
+        </Link>
+        <Link
           title='GitHub'
           href='https://github.com/SetroZ'
           target='_blank'
@@ -95,7 +96,7 @@ const NavBar = () => {
             height={35}
             alt='linkedIn'
           />
-        </a>
+        </Link>
       </div>
       <div className='md:hidden '>
         <Image
@@ -114,7 +115,7 @@ const NavBar = () => {
           }   flex flex-col justify-center items-center gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3  transition-all  duration-500 `}
         >
           {Buttons.map((name) => (
-            <a
+            <Link
               onClick={(e) => {
                 handleClick(e, name)
                 setToggle(false)
@@ -128,7 +129,7 @@ const NavBar = () => {
               }`}
             >
               {name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

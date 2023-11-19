@@ -75,7 +75,7 @@ const Experience = () => {
   return (
     <div className='w-full '>
       <Title
-        id='Projects'
+        id='Experience'
         subTitle='A brief overview of my work'
         title='Past Experience'
       />
