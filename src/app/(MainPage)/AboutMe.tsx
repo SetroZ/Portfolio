@@ -1,6 +1,6 @@
 import React from 'react'
-import Title from './Title'
-import StarsCanvas from './StarCanvas'
+import Title from '../../components/Title'
+import StarsCanvas from '../../components/StarCanvas'
 
 const AboutMe = () => {
   return (

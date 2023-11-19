@@ -1,6 +1,6 @@
-import Title from './Title'
+import Title from '../../components/Title'
 import { techStack } from '@/data'
-import BallCanvas from './BallCanvas'
+import BallCanvas from '../../components/BallCanvas'
 const Stack = () => {
   return (
     <div className=' flex  flex-col'>

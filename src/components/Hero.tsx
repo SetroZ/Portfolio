@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar'
-import Introduction from './Introduction'
-import Experience from './Experience'
-import Stack from './Stack'
-import AboutMe from './AboutMe'
-import Contact from './Contact'
+import Introduction from '../app/(MainPage)/Introduction'
+import Experience from '../app/(MainPage)/Experience'
+import Stack from '../app/(MainPage)/Stack'
+import AboutMe from '../app/(MainPage)/AboutMe'
+import Contact from '../app/(MainPage)/Contact'
 import StarsCanvas from './StarCanvas'
 const Hero = () => {
   return (
@@ -14,7 +14,6 @@ const Hero = () => {
         <Introduction />
       </div>
       <AboutMe />
-
     </div>
   )
 }

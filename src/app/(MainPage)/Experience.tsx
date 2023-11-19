@@ -4,7 +4,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component'
-import Title from './Title'
+import Title from '../../components/Title'
 import 'react-vertical-timeline-component/style.min.css'
 import Image from 'next/image'
 
@@ -15,7 +15,6 @@ const ExperienceCard = ({ experience }: { experience: experienceType }) => {
       contentStyle={{
         background: '#18181b',
         color: experience.color,
-
       }}
       contentArrowStyle={{ borderRight: '15px solid ' + experience.color }}
       date={experience.date}
@@ -49,7 +48,6 @@ const ExperienceCard = ({ experience }: { experience: experienceType }) => {
           >
             {experience.title}
           </a>
-          
         </div>
         <p
           className={`  text-secondary font-semibold text-zinc-400`}
@@ -75,8 +73,12 @@ const ExperienceCard = ({ experience }: { experience: experienceType }) => {
 
 const Experience = () => {
   return (
-    <div className='w-full ' >
-      <Title id='Projects' subTitle='A brief overview of my work' title='Past Experience' />
+    <div className='w-full '>
+      <Title
+        id='Projects'
+        subTitle='A brief overview of my work'
+        title='Past Experience'
+      />
       <div className='mt-20 '>
         <VerticalTimeline>
           {experiences.map((experience) => (
