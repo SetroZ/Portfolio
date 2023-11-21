@@ -8,22 +8,33 @@ generator client {
 }
 
 model Article {
-  id      Int       @id @default(autoincrement())
-  title   String
-  body    String
-  image   String?
-  likes   Int
-  Comment Comment[]
+  id       Int       @id @default(autoincrement())
+  date     DateTime  @default(now())
+  title    String
+  subtitle String
+  body     String
+  image    String?
+  Comment  Comment[]
 }
 
 model Comment {
+  id         Int      @id @default(autoincrement())
+  date       DateTime @default(now())
   name       String
-  Article    Article @relation(fields: [article_id], references: [id])
+  Article    Article  @relation(fields: [article_id], references: [id])
   article_id Int
-  likes      Int
-
-  @@id([name, article_id])
+  body       String
 }
+
+// model Experience{
+//   title String @id
+//   subTitle String
+//   desc String[]
+//   color String
+//   link String
+//   date String
+//   pic String
+// }
 
 // model Experience{
 //   title String @id

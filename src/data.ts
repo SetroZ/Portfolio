@@ -102,8 +102,8 @@ export const dummyData = [
     date: '2021',
     likes: 10,
     comments: [
-      { name: 'John Doe', likes: 5 },
-      { name: 'Jane Smith', likes: 3 },
+      { name: 'John Doe'},
+      { name: 'Jane Smith' },
     ],
   },
   {

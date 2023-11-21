@@ -6,7 +6,6 @@ export interface blogType {
   title: string
   body: string
   image: string
-  likes: number
   date: string
   subtitle: string
 }
@@ -16,7 +15,6 @@ const BlogCard = ({
   title,
   body,
   image,
-  likes,
   date,
   subtitle,
 }: blogType) => {
