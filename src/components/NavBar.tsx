@@ -44,7 +44,7 @@ const NavBar = () => {
   }
   return (
     <nav
-      className={`flex 
+      className={`flex  z-30
    flex-row justify-between items-center  top-0 
      fixed ${
        scrolled
@@ -114,7 +114,7 @@ const NavBar = () => {
           className={`invert  ${
             toggle ? 'rotate-[270deg]' : 'f'
           } rotate-[189deg] transition-all  duration-300  cursor-pointer hover:w-[45px] `}
-          src='./sidebar.svg'
+          src='/sidebar.svg'
           width={40}
           height={40}
           alt='toggle'
