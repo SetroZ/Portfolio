@@ -8,12 +8,14 @@ generator client {
 }
 
 model Article {
-  id      Int       @id @default(autoincrement())
-  title   String
-  body    String
-  image   String?
-  likes   Int
-  Comment Comment[]
+  id       Int       @id @default(autoincrement())
+  date     DateTime  @default(now())
+  title    String
+  subtitle String
+  body     String
+  image    String?
+  likes    Int
+  Comment  Comment[]
 }
 
 model Comment {
@@ -24,3 +26,13 @@ model Comment {
 
   @@id([name, article_id])
 }
+
+// model Experience{
+//   title String @id
+//   subTitle String
+//   desc String[]
+//   color String
+//   link String
+//   date String
+//   pic String
+// }
