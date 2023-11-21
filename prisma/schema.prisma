@@ -14,17 +14,15 @@ model Article {
   subtitle String
   body     String
   image    String?
-  likes    Int
   Comment  Comment[]
 }
 
 model Comment {
+  id         Int      @id @default(autoincrement())
+  date       DateTime @default(now())
   name       String
-  Article    Article @relation(fields: [article_id], references: [id])
+  Article    Article  @relation(fields: [article_id], references: [id])
   article_id Int
-  likes      Int
-
-  @@id([name, article_id])
 }
 
 // model Experience{
