@@ -1,8 +1,19 @@
 import React from 'react'
-
-const page = () => {
+import { dummyData } from '@/data'
+import Title from '@/components/Title'
+const page = async () => {
   return (
-    <div>page</div>
+    <main className=' flex justify-center'>
+      <Title
+        title='Blogs'
+        subTitle='Tech Tales Unleashed
+'
+      />
+      <div className=''>
+
+        
+      </div>
+    </main>
   )
 }
 

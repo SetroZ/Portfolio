@@ -91,3 +91,30 @@ export const experiences: experienceType[] = [
     date: '2020',
   },
 ]
+export const dummyData = {
+  articles: [
+    {
+      id: 1,
+      title: 'Sample Article 1',
+      body: 'This is the body of the first article.',
+      image: 'sample-image-1.jpg',
+      likes: 10,
+      comments: [
+        { name: 'John Doe', likes: 5 },
+        { name: 'Jane Smith', likes: 3 },
+      ],
+    },
+    {
+      id: 2,
+      title: 'Sample Article 2',
+      body: 'This is the body of the second article.',
+      likes: 20,
+      comments: [
+        { name: 'Alice Johnson', likes: 8 },
+        { name: 'Bob Williams', likes: 2 },
+      ],
+    },
+    // Add more articles as needed
+  ],
+}
+ 

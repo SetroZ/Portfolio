@@ -29,14 +29,6 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    if (pathname.length>0) {
-      router.push(window.location.href)
-    }
-
-    // ...
-  }, [pathname])
-
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     name: ButtonType
@@ -46,13 +38,14 @@ const NavBar = () => {
     if (name == 'Blogs') {
       router.push('/blogs')
     } else {
-      router.replace(`/#${name}`)
+      router.replace(`/#${name}`),
+        setTimeout(() => router.replace(`/#${name}`), 200)
     }
   }
   return (
     <nav
       className={`flex 
-   flex-row justify-between items-center 
+   flex-row justify-between items-center  top-0 
      fixed ${
        scrolled
          ? 'bg-[#070707] border-white border-solid border-b-[1px] '
