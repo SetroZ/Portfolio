@@ -1,14 +1,15 @@
 import React from 'react'
-import { dummyData } from '@/data'
-import BlogCard, { blogType } from './(components)/BlogCard'
+import BlogCard from './(components)/BlogCard'
 import Title from '@/components/Title'
 import prisma from '@/Singleton'
+
 const page = async () => {
-  const data: blogType[] = await prisma.article.findMany({
+  const data = await prisma.article.findMany({
     cacheStrategy: {
       ttl: 21600,
     },
   })
+
   return (
     <main className='flex flex-col justify-center items-center gap-20'>
       <Title

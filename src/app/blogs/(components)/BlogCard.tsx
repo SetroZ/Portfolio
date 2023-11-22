@@ -33,7 +33,14 @@ const formatDate = (date: Date) => {
     return month + ' ' + (date.getFullYear() % 100)
   }
 }
-const BlogCard = ({ id, title, body, image, date, subtitle }: blogType) => {
+const BlogCard = ({
+  id,
+  title,
+  body,
+  image,
+  date,
+  subtitle,
+}: Omit<blogType, 'Comment'>) => {
   return (
     <Link
       href={'/blogs/' + id}
