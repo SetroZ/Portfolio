@@ -100,7 +100,6 @@ export const dummyData = [
     subtitle:
       'Material 3 by default, Impeller preview for Android, DevTools extensions, and much more',
     date: '2021',
-    likes: 10,
     comments: [
       { name: 'John Doe'},
       { name: 'Jane Smith' },
@@ -110,10 +109,9 @@ export const dummyData = [
     id: 2,
     title: 'Sample Article 2',
     body: 'This is the body of the second article.',
-    likes: 20,
     comments: [
-      { name: 'Alice Johnson', likes: 8 },
-      { name: 'Bob Williams', likes: 2 },
+      { name: 'Alice Johnson' },
+      { name: 'Bob Williams' },
     ],
   },
   // Add more articles as needed

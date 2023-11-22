@@ -1,9 +1,22 @@
 import { blogType } from '../(components)/BlogCard'
+import prisma from '@/Singleton'
 import Link from 'next/link'
-import { dummyData } from '@/data'
+import CommentCard, { CommentType } from '../(components)/CommentCard'
 import Image from 'next/image'
-const blogId = ({ params }: { params: { id: string } }) => {
-  const data = dummyData[0]
+const blogId = async ({ params }: { params: { id: string } }) => {
+  const data: blogType = await prisma.article.findFirst({
+    include: {
+      Comment: true,
+    },
+    where: {
+      id: {
+        equals: parseInt(params.id),
+      },
+    },
+    cacheStrategy: {
+      ttl: 21600,
+    },
+  })
   return (
     <main className='mt-32  flex justify-center items-center flex-col gap-4'>
       <Image
@@ -26,11 +39,20 @@ const blogId = ({ params }: { params: { id: string } }) => {
             height={30}
             alt='comment'
           />
-          <p className='text-2xl'>{data.comments.length}</p>
+          <p className='text-2xl'>{data.Comment.length}</p>
         </Link>
       </div>
-      <div className='w-[90%] lg:w-[60%]  text-xl tracking-wide leading-8'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dolore quasi pariatur nam reiciendis, dolorum maiores quae. Explicabo voluptates quia officia! Aliquam corporis excepturi velit quam beatae soluta nemo perferendis incidunt suscipit, necessitatibus modi facere sint numquam neque officiis. Ratione est voluptas minus cumque laborum ullam sit nam! Recusandae doloribus odit labore. Expedita modi recusandae nisi, dicta delectus ab nemo numquam molestiae repudiandae consequuntur ipsum, enim ipsam porro ex. Ea molestias amet culpa laborum inventore dolor a praesentium. Enim harum placeat magni inventore odio corrupti officia velit, tenetur debitis accusantium tempore iste mollitia laudantium. Mollitia sed laudantium cumque voluptate earum magnam voluptas consectetur suscipit maiores, quam odit repellendus tempora temporibus consequatur officia iusto adipisci dolor, nobis, error delectus? Non et maiores accusamus ipsa quibusdam facilis vero sed suscipit fugiat, quae corrupti harum dolore delectus excepturi, necessitatibus, nobis consequuntur consectetur nam saepe officia. Nihil quam minus porro reiciendis numquam, accusantium dolorem eius eveniet nesciunt? Vero rem dolorum ex beatae nulla maiores dolor, qui, consequuntur aliquam error quas illo distinctio porro fugiat unde optio? Non repudiandae fugit iure laudantium expedita veritatis dolores delectus officiis velit neque saepe temporibus aliquam perferendis dolorum qui vel assumenda, cupiditate tempore ab. Quidem dolore eum ad perferendis. Odio sed assumenda aspernatur repellendus doloribus, ullam laboriosam architecto odit consectetur cumque nihil excepturi praesentium. Repellat nesciunt optio obcaecati, atque quas debitis pariatur sint laboriosam voluptas officia omnis ab iusto ea magni minus possimus a eaque beatae culpa quam repudiandae illo sed nisi esse! Quidem aperiam ab fugiat quod earum, aliquam voluptates quae illum qui quos eaque odio optio distinctio velit sapiente explicabo perspiciatis, vero ut porro facilis eveniet aliquid corporis. Officiis vitae ratione cumque corrupti, totam eaque perferendis tenetur sequi ullam quia excepturi quas officia doloribus possimus voluptatum dolorem quam commodi at sunt aut? Laudantium similique reiciendis doloribus nisi dignissimos quisquam ex veritatis hic. Modi, in. Dolorem, doloribus, omnis quibusdam fugit ut aspernatur itaque odit natus, ratione nulla quasi ab voluptas perferendis iste eligendi necessitatibus officia! Maxime, consequuntur similique pariatur est placeat laborum distinctio, ratione quo nam, blanditiis voluptatum obcaecati. Placeat accusantium inventore, dolore, architecto unde ipsum dolor asperiores eligendi quas, in saepe omnis. Incidunt dicta illo placeat expedita! Recusandae iusto alias atque quisquam cupiditate expedita doloremque eius sunt cum quis doloribus itaque obcaecati vitae voluptatibus quos perferendis exercitationem dolore a sapiente, quo esse totam! Laborum autem eum, laboriosam vero ad molestias natus amet in ipsum minus libero aliquam voluptate excepturi inventore vel ea optio repudiandae aspernatur rem repellat? Harum incidunt perspiciatis, sit totam reiciendis quasi, et adipisci accusantium ex hic qui. Nostrum dignissimos culpa ullam optio nisi id eaque voluptas aliquid odit, asperiores iusto nam harum repellendus earum, adipisci illum aperiam, deleniti praesentium sapiente alias reprehenderit. Officia consectetur minima molestiae voluptate esse nisi commodi vel atque eos aliquid reprehenderit consequuntur voluptatum eveniet ipsa, dignissimos animi minus nemo? Repellendus, ex velit dignissimos earum, perspiciatis vero eum facere aliquid pariatur cumque nobis sunt magnam ipsum? Ipsum ut doloremque iure! Nesciunt ad quisquam cum expedita natus quis adipisci excepturi est, voluptas id, corrupti maiores unde dolorem itaque quas, facilis quia perferendis velit quidem? Incidunt, quo ipsam illo modi itaque quaerat, hic error, officia eaque dolorum temporibus autem vel nesciunt quod officiis velit recusandae asperiores adipisci doloribus sapiente. Nisi rem saepe blanditiis natus adipisci exercitationem quibusdam ipsum, aliquam minus pariatur quisquam! Reiciendis dolorum adipisci, enim, illum rem expedita modi odio repellat, nisi dolore fuga eius? Soluta rerum ipsam nam blanditiis nisi, iusto harum error quas dolore nihil repudiandae autem esse excepturi doloribus laborum labore natus quasi repellat dolores unde commodi sint omnis. Eaque veritatis fugiat, fuga nam ducimus voluptatum quod natus blanditiis.
+      <div className=' flex flex-col gap-6 w-[90%] lg:w-[60%]  '>
+        <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
+        <hr className=' border-2 border-slate-300'></hr>
+        <div className='flex flex-col w-full ' id='comment'>
+          <h2 className='text-3xl font-extrabold'>Comments</h2>
+          <div className=' flex flex-col gap-4 mt-2 pb-3'>
+            {data.Comment.map((comment) => (
+              <CommentCard key={comment.id} {...comment} />
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   )
