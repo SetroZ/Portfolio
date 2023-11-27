@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       .from('Images')
       .createSignedUploadUrl(name)
 
-    const res = supabase.storage.from('public-bucket').getPublicUrl(data.path)
+    const res = supabase.storage.from('Images').getPublicUrl(data.path)
     const newBlog = await prisma.article.create({
       data: {
         title: formData.title,
