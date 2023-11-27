@@ -1,5 +1,5 @@
 import { blogType } from '../(components)/BlogCard'
-import prisma from '@/Singleton'
+import prisma from '@/app/clients/Singleton'
 import Link from 'next/link'
 import CommentCard, { CommentType } from '../(components)/CommentCard'
 import Image from 'next/image'

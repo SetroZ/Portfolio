@@ -1,7 +1,7 @@
 import React from 'react'
 import BlogCard from './(components)/BlogCard'
 import Title from '@/components/Title'
-import prisma from '@/Singleton'
+import prisma from '@/app/clients/Singleton'
 
 const page = async () => {
   const data = await prisma.article.findMany({
