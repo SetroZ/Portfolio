@@ -10,7 +10,7 @@ export default function Login() {
   const [formData, setFormData] = useState<blogSubmitType>({
     title: '',
     body: '',
-    image: '/Empty.png',
+    image: '',
     subtitle: '',
   })
   console.log('image')
@@ -22,9 +22,7 @@ export default function Login() {
       return {
         ...prevState,
         [e.target.name]:
-          e.target.name == 'image'
-            ? [URL.createObjectURL(e.target.files[0]), e.target.files[0]]
-            : e.target.value,
+          e.target.name == 'image' ? e.target.files[0] : e.target.value,
       }
     })
   }
@@ -33,7 +31,7 @@ export default function Login() {
 
     const result = await fetch('/api/blogs', {
       method: 'POST',
-      body: JSON.stringify({ ...formData, image: formData.image[1].name }),
+      body: JSON.stringify({ ...formData, image: formData.image!.name }),
     })
     const data = await result.json()
     console.log(data)
@@ -41,8 +39,8 @@ export default function Login() {
     const { error } = await supabase.storage.from('Images').uploadToSignedUrl(
       data.link.path,
       data.link.token,
-      new File([formData.image[1]], data.name, {
-        type: formData.image[1].type,
+      new File([formData.image], data.name, {
+        type: formData.image.type,
       })
     )
     console.log(error)
@@ -86,9 +84,13 @@ export default function Login() {
           />
           <Image
             className={`mt-3 m-auto ${
-              formData.image == '/Empty.png' ? 'hidden' : ''
+              formData.image?.name == null ? 'hidden' : ''
             }`}
-            src={formData.image[0]}
+            src={
+              formData.image?.name != null
+                ? URL.createObjectURL(formData.image)
+                : ''
+            }
             width={200}
             height={200}
             alt='test'
