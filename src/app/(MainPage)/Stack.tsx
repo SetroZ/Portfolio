@@ -1,5 +1,5 @@
 import Title from '../../components/Title'
-import { techStack } from '@/data'
+import { techStack } from '@/app/clients/data'
 import BallCanvas from '../../components/BallCanvas'
 const Stack = () => {
   return (

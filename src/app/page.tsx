@@ -7,6 +7,7 @@ import Contact from '@/app/(MainPage)/Contact'
 export default function Home() {
   return (
     <main className='flex  flex-col items-center justify-between '>
+      <StarsCanvas />
       <Hero />
       <Experience />
       <Stack />

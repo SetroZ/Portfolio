@@ -91,3 +91,28 @@ export const experiences: experienceType[] = [
     date: '2020',
   },
 ]
+export const dummyData = [
+  {
+    id: 1,
+    title: "What's new in Flutter 3.16",
+    body: 'Welcome back to the quarterly Flutter stable release, this time for Flutter 3.16. This release sets Material 3 as the new default theme, brings a preview of Impeller to Android, allows adding extensions for DevTools, and much more! It also coincides with significant updates to the Flutter Casual Games ToolkitIn only three months since our last release, we’ve had 928 pull requests merged by 145 community members with 40 community members authoring their first commit to Flutter!Keep reading to learn about all the new additions and improvements the Flutter community has contributed to this latest release!',
+    image: '/test.webp',
+    subtitle:
+      'Material 3 by default, Impeller preview for Android, DevTools extensions, and much more',
+    date: '2021',
+    comments: [
+      { name: 'John Doe'},
+      { name: 'Jane Smith' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Sample Article 2',
+    body: 'This is the body of the second article.',
+    comments: [
+      { name: 'Alice Johnson' },
+      { name: 'Bob Williams' },
+    ],
+  },
+  // Add more articles as needed
+]

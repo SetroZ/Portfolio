@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div className='bgGradient w-full     bg-center bg-cover    ' id='Home'>
       {/* <NavBar /> */}
-      <div className='lg:mx-80 md:mx-26 mx-3  '>
+      <div className='lg:mx-60 md:mx-20 mx-3  '>
         <Introduction />
       </div>
       <AboutMe />

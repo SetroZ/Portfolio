@@ -23,7 +23,18 @@ model Comment {
   name       String
   Article    Article  @relation(fields: [article_id], references: [id])
   article_id Int
+  body       String
 }
+
+// model Experience{
+//   title String @id
+//   subTitle String
+//   desc String[]
+//   color String
+//   link String
+//   date String
+//   pic String
+// }
 
 // model Experience{
 //   title String @id

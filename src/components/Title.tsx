@@ -5,7 +5,7 @@ const Title = ({
 }: {
   id?: string
   title: String
-  subTitle: string
+  subTitle?: string
 }) => {
   return (
     <div className='flex flex-col items-center'>
