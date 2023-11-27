@@ -3,8 +3,10 @@ import { useState } from 'react'
 export default function Admin() {
   const [password, setPassword] = useState<string>()
   const handleClick = (e: React.MouseEvent) => {
-    document.cookie =
-      'password=' + password + '; SameSite=Strict; Secure; HttpOnly'
+    const res = fetch('/api/admin', {
+      body: JSON.stringify(password),
+      method: 'POST',
+    })
   }
   return (
     <main className='flex flex-col gap-6 justify-center items-center w-full h-full mt-24 p-8 '>

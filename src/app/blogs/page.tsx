@@ -5,9 +5,7 @@ import prisma from '@/app/clients/Singleton'
 
 const page = async () => {
   const data = await prisma.article.findMany({
-    cacheStrategy: {
-      ttl: 21600,
-    },
+   
   })
 
   return (

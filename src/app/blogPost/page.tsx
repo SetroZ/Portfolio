@@ -1,18 +1,11 @@
 'use client'
 
-import Link from 'next/link'
 import Title from '@/components/Title'
-
-import { blogType } from '../blogs/(components)/BlogCard'
+import { blogSubmitType } from '@/types'
 import Image from 'next/image'
 import { useState } from 'react'
+import supabase from '../clients/supabase'
 
-interface blogSubmitType {
-  title: string
-  body: string
-  image: string
-  subtitle: string
-}
 export default function Login() {
   const [formData, setFormData] = useState<blogSubmitType>({
     title: '',
@@ -20,6 +13,7 @@ export default function Login() {
     image: '/Empty.png',
     subtitle: '',
   })
+  console.log('image')
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -29,17 +23,29 @@ export default function Login() {
         ...prevState,
         [e.target.name]:
           e.target.name == 'image'
-            ? URL.createObjectURL(e.target.files[0])
+            ? [URL.createObjectURL(e.target.files[0]), e.target.files[0]]
             : e.target.value,
       }
     })
   }
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const result = fetch('/api/blogs', {
+
+    const result = await fetch('/api/blogs', {
       method: 'POST',
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, image: formData.image[1].name }),
     })
+    const data = await result.json()
+    console.log(data)
+
+    const { error } = await supabase.storage.from('Images').uploadToSignedUrl(
+      data.link.path,
+      data.link.token,
+      new File([formData.image[1]], data.name, {
+        type: formData.image[1].type,
+      })
+    )
+    console.log(error)
   }
   return (
     <main className='flex flex-col justify-center items-center   w-full h-full'>
@@ -82,7 +88,7 @@ export default function Login() {
             className={`mt-3 m-auto ${
               formData.image == '/Empty.png' ? 'hidden' : ''
             }`}
-            src={formData.image}
+            src={formData.image[0]}
             width={200}
             height={200}
             alt='test'
@@ -99,6 +105,9 @@ export default function Login() {
             className={`bg-zinc-800 py-4  border-[1px] border-gray-600 
              outline-none px-6  text-white rounded-lg  font-medium`}
           />
+        </label>
+        <label className='flex flex-col'>
+          <span className='text-white font-medium mb-4'>Password</span>
         </label>
 
         <button
