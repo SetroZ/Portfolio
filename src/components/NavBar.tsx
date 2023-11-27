@@ -5,15 +5,18 @@ import { useSearchParams, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 const Buttons = ['Home', 'Experience', 'Stack', 'Contact', 'Blogs'] as const
+const Buttons2 = ['Home', 'Blogs']
 type ButtonType = (typeof Buttons)[number] // 'Home' | 'Stack' | 'Projects'
-import BallCanvas from './BallCanvas'
 const NavBar = () => {
   const router = useRouter()
   const pathname = usePathname()
   const [toggle, setToggle] = useState(false)
-  const [selected, setSelected] = useState<ButtonType>('Home')
+  const [selected, setSelected] = useState<ButtonType>(
+    pathname == '/' ? 'Home' : 'Blogs'
+  )
   const [scrolled, setScrolled] = useState(false)
-
+  const toMap = pathname == '/' ? Buttons : Buttons2
+  console.log(pathname)
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
@@ -36,10 +39,13 @@ const NavBar = () => {
     setSelected(name)
     e.preventDefault()
     if (name == 'Blogs') {
-      router.push('/blogs')
+      router.replace('/blogs')
     } else {
-      router.replace(`/#${name}`),
-        setTimeout(() => router.replace(`/#${name}`), 200)
+      if (pathname == '/') {
+        router.replace(`/#${name}`)
+      } else if (pathname != '/') {
+        router.replace('/')
+      }
     }
   }
   return (
@@ -61,8 +67,8 @@ const NavBar = () => {
           alt='logo'
         />
       </div>
-      <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-2xl  '>
-        {Buttons.map((name) => (
+      <div className='hidden  md:flex flex-row justify-end gap-6 items-center font-semibold text-xl  '>
+        {toMap.map((name) => (
           <Link
             onClick={(e) => {
               handleClick(e, name)
@@ -70,8 +76,8 @@ const NavBar = () => {
             href={''}
             key={name}
             className={`${
-              selected == name ? 'text-3xl' : 'text-gray-400'
-            } hover:text-3xl transition-all duration-200 `}
+              selected == name ? 'text-2xl' : 'text-gray-400'
+            } hover:text-2xl transition-all duration-200 `}
           >
             {name}
           </Link>
@@ -112,7 +118,7 @@ const NavBar = () => {
         <Image
           onClick={() => setToggle(!toggle)}
           className={`invert  ${
-            toggle ? 'rotate-[270deg]' : 'f'
+            toggle ? 'rotate-[270deg]' : ''
           } rotate-[189deg] transition-all  duration-300  cursor-pointer hover:w-[45px] `}
           src='/sidebar.svg'
           width={40}
@@ -124,7 +130,7 @@ const NavBar = () => {
             toggle ? 'opacity-100' : 'opacity-0 cursor-default'
           }   flex flex-col justify-center items-center gap-3 absolute  top-[70px] right-[30px] bg-zinc-900 rounded-lg p-3  transition-all  duration-500 `}
         >
-          {Buttons.map((name) => (
+          {toMap.map((name) => (
             <Link
               onClick={(e) => {
                 handleClick(e, name)

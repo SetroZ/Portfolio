@@ -18,6 +18,7 @@ const AboutMe = () => {
           about weightlifting and chess, and fluent in both English and Arabic.
           Take a look at my website and let&apos;s talk!
         </p>
+        
       </div>
     </div>
   )
