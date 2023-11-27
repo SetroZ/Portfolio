@@ -8,6 +8,9 @@ const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz')
 const key = process.env.POST_BLOG_SECRET
 export async function POST(req: NextRequest) {
   try {
+    if (cookies().get('password').value != key) {
+      return NextResponse.json({ error: 'Restricted' }, { status: 401 })
+    }
     const formData: blogSubmitType = await req.json()
     const name = `Blogs/${nanoid()}.webp`
     console.log(name)
