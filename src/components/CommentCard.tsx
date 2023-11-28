@@ -1,10 +1,5 @@
 import Image from 'next/image'
-export interface CommentType {
-  name: string
-  body: string
-  date: Date
-  id: number
-}
+import { CommentType } from '@/types'
 const formatDate = (date: Date) => {
   return (
     date.getDate() +

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CommentType } from './CommentCard'
+import { CommentType } from '@/types'
 const months = [
   'Jan',
   'Feb',
@@ -15,16 +15,8 @@ const months = [
   'Nov',
   'Dec',
 ]
+import { blogType } from '@/types'
 
-export interface blogType {
-  id: number
-  title: string
-  body: string
-  image: string
-  date: Date
-  subtitle: string
-  Comment: CommentType[]
-}
 const formatDate = (date: Date) => {
   const month = months[date.getMonth()]
   if (date.getFullYear() == new Date().getFullYear()) {
