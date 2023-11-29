@@ -8,6 +8,10 @@ export function BlogPage({
 }: {
   data: blogType
   modify: boolean
+  handleChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void,
+  
 }) {
   return (
     <main className='mt-32  flex justify-center items-center flex-col gap-4'>
@@ -23,8 +27,14 @@ export function BlogPage({
       <div className=' px-4 flex  w-full flex-col gap-1 '>
         {modify ? (
           <>
-            <input value={data.title} className='text-2xl font-extrabold' />
-            <input value={data.subtitle} className='text-lg text-slate-300' />
+            <input
+              value={data.title}
+              className='text-2xl font-extrabold bg-transparent'
+            />
+            <input
+              value={data.subtitle}
+              className='text-lg text-slate-300 bg-transparent'
+            />
           </>
         ) : (
           <>
@@ -48,7 +58,7 @@ export function BlogPage({
         {modify ? (
           <input
             value={data.body}
-            className=' text-xl tracking-wide leading-8'
+            className=' text-xl tracking-wide leading-8 bg-transparent'
           />
         ) : (
           <p className=' text-xl tracking-wide leading-8'>{data.body}</p>

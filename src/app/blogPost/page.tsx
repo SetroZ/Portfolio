@@ -5,6 +5,7 @@ import { blogSubmitType } from '@/types'
 import Image from 'next/image'
 import { useState } from 'react'
 import supabase from '../../clients/supabase'
+import CustomButton from '@/components/CustomButton'
 
 export default function Login() {
   const [formData, setFormData] = useState<blogSubmitType>({
@@ -112,16 +113,7 @@ export default function Login() {
           <span className='text-white font-medium mb-4'>Password</span>
         </label>
 
-        <button
-          type='submit'
-          className='button w-40 p-2 rounded-md  text-xl bg-purple-500  cursor-pointer select-none
-          active:translate-y-2  active:[box-shadow:0_0px_0_0_#9333ea,0_0px_0_0_#9333ea]
-          active:border-b-[0px]
-          transition-all duration-150 [box-shadow:0_8px_0_0_#9333ea,0_13px_0_0_#9333ea]
-          border-[1px] border-purple-500 font-bold'
-        >
-          Upload
-        </button>
+        <CustomButton type='submit'>Upload</CustomButton>
       </form>
     </main>
   )

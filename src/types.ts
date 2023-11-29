@@ -1,3 +1,17 @@
+export interface formType {
+  name: string
+  email: string
+  title: string
+  message: string
+}
+export interface formStates {
+  [key: string]: boolean
+  name: boolean
+  email: boolean
+  title: boolean
+  message: boolean
+}
+
 export interface blogSubmitType {
   title: string
   body: string

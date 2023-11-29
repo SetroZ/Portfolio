@@ -2,22 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../../components/Title'
 import Link from 'next/link'
+import CustomButton from '@/components/CustomButton'
+import { formType, formStates } from '@/types'
 const rEmail =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
-interface formType {
-  name: string
-  email: string
-  title: string
-  message: string
-}
-interface formStates {
-  [key: string]: boolean
-  name: boolean
-  email: boolean
-  title: boolean
-  message: boolean
-}
 const ErrorComp = ({ message, state }: { message: string; state: boolean }) => {
   return (
     <p
@@ -135,16 +124,7 @@ const Contact = () => {
         className='text-center text-xl font-bold mt-5'
         href='mailto:joemosabry@gmail.com'
       >
-        <button
-          type='submit'
-          className='button w-60 p-2 rounded-md  text-3xl bg-purple-500  cursor-pointer select-none
-          active:translate-y-2  active:[box-shadow:0_0px_0_0_#9333ea,0_0px_0_0_#9333ea]
-          active:border-b-[0px]
-          transition-all duration-150 [box-shadow:0_8px_0_0_#9333ea,0_13px_0_0_#9333ea]
-          border-[1px] border-purple-500'
-        >
-          Email Me
-        </button>
+        <CustomButton type='submit'>Email Me</CustomButton>
       </Link>
       <form
         onSubmit={handleSubmit}
