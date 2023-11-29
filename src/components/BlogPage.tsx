@@ -2,7 +2,13 @@ import Link from 'next/link'
 import CommentCard from '@/components/CommentCard'
 import Image from 'next/image'
 import { blogType } from '@/types'
-export function BlogPage({ data }: { data: blogType }) {
+export function BlogPage({
+  data,
+  modify,
+}: {
+  data: blogType
+  modify: boolean
+}) {
   return (
     <main className='mt-32  flex justify-center items-center flex-col gap-4'>
       <Image
@@ -15,8 +21,18 @@ export function BlogPage({ data }: { data: blogType }) {
       />
 
       <div className=' px-4 flex  w-full flex-col gap-1 '>
-        <h1 className='text-2xl font-extrabold'>{data.title}</h1>
-        <h2 className='text-lg text-slate-300'>{data.subtitle}</h2>
+        {modify ? (
+          <>
+            <input value={data.title} className='text-2xl font-extrabold' />
+            <input value={data.subtitle} className='text-lg text-slate-300' />
+          </>
+        ) : (
+          <>
+            <h1 className='text-2xl font-extrabold'>{data.title}</h1>
+            <h2 className='text-lg text-slate-300'>{data.subtitle}</h2>
+          </>
+        )}
+
         <Link href='#comment' className='flex flex-row gap-2 w-auto h-auto'>
           <Image
             className='invert'
@@ -29,7 +45,14 @@ export function BlogPage({ data }: { data: blogType }) {
         </Link>
       </div>
       <div className=' flex flex-col gap-6 w-[90%] lg:w-[60%]  '>
-        <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
+        {modify ? (
+          <input
+            value={data.body}
+            className=' text-xl tracking-wide leading-8'
+          />
+        ) : (
+          <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
+        )}
         <hr className=' border-2 border-slate-300'></hr>
         <div className='flex flex-col w-full ' id='comment'>
           <h2 className='text-3xl font-extrabold'>Comments</h2>

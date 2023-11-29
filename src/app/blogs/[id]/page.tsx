@@ -1,5 +1,5 @@
 import { blogType } from '@/types'
-import prisma from '@/app/clients/Singleton'
+import prisma from '@/clients/Singleton'
 import { BlogPage } from '@/components/BlogPage'
 
 const blogId = async ({ params }: { params: { id: string } }) => {
@@ -16,7 +16,7 @@ const blogId = async ({ params }: { params: { id: string } }) => {
       ttl: 21600,
     },
   })
-  return <BlogPage data={data} />
+  return <BlogPage data={data} modify={false} />
 }
 
 export default blogId

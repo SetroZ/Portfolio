@@ -4,7 +4,7 @@ import Title from '@/components/Title'
 import { blogSubmitType } from '@/types'
 import Image from 'next/image'
 import { useState } from 'react'
-import supabase from '../clients/supabase'
+import supabase from '../../clients/supabase'
 
 export default function Login() {
   const [formData, setFormData] = useState<blogSubmitType>({

@@ -1,12 +1,10 @@
 import React from 'react'
 import BlogCard from './(components)/BlogCard'
 import Title from '@/components/Title'
-import prisma from '@/app/clients/Singleton'
+import prisma from '@/clients/Singleton'
 
 const page = async () => {
-  const data = await prisma.article.findMany({
-   
-  })
+  const data = await prisma.article.findMany({})
 
   return (
     <main className='flex flex-col justify-center items-center gap-20'>

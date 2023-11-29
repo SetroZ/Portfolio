@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import supabase from '@/app/clients/supabase'
-import prisma from '@/app/clients/Singleton'
+import supabase from '@/clients/supabase'
+import prisma from '@/clients/Singleton'
 import { blogSubmitType } from '@/types'
 import { customAlphabet } from 'nanoid'
 import { cookies } from 'next/headers'

@@ -1,5 +1,5 @@
 'use client'
-import { experiences, experienceType } from '@/app/clients/data'
+import { experiences, experienceType } from '@/clients/data'
 import {
   VerticalTimeline,
   VerticalTimelineElement,
