@@ -2,6 +2,9 @@ import Link from 'next/link'
 import CommentCard from '@/components/CommentCard'
 import Image from 'next/image'
 import { blogType } from '@/types'
+import CustomButton from './CustomButton'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import CommentInput from './CommentInput'
 export function BlogPage({
   data,
   modify,
@@ -10,8 +13,7 @@ export function BlogPage({
   modify: boolean
   handleChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void,
-  
+  ) => void
 }) {
   return (
     <main className='mt-32  flex justify-center items-center flex-col gap-4'>
@@ -19,7 +21,7 @@ export function BlogPage({
         width={0}
         height={0}
         sizes='100vw'
-        className=' object-cover w-full h-auto'
+        className=' object-cover w-full h-auto lg:w-[75%]'
         src={data.image}
         alt='blog image'
       />
@@ -55,18 +57,24 @@ export function BlogPage({
         </Link>
       </div>
       <div className=' flex flex-col gap-6 w-[90%] lg:w-[60%]  '>
-        {modify ? (
-          <input
-            value={data.body}
-            className=' text-xl tracking-wide leading-8 bg-transparent'
-          />
-        ) : (
-          <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
-        )}
+        <article className='prose prose-invert break-words'>
+          {modify ? (
+            <MDXRemote
+              source={`# Hello World
+            This is from Server Components!sdadadadadasssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            ## big man
+            
+            `}
+            />
+          ) : (
+            <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
+          )}
+        </article>
         <hr className=' border-2 border-slate-300'></hr>
         <div className='flex flex-col w-full ' id='comment'>
           <h2 className='text-3xl font-extrabold'>Comments</h2>
           <div className=' flex flex-col gap-4 mt-2 pb-3'>
+            <CommentInput blogId={data.id} />
             {data.Comment.map((comment) => (
               <CommentCard key={comment.id} {...comment} />
             ))}

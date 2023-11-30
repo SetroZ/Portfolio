@@ -4,7 +4,7 @@ const Title = ({
   subTitle,
 }: {
   id?: string
-  title: String
+  title: string
   subTitle?: string
 }) => {
   return (
