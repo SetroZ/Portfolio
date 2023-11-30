@@ -25,11 +25,13 @@ export interface blogType {
   image: string
   date: Date
   subtitle: string
-  Comment: CommentType[]
+  Comment: commentType[]
 }
-export interface CommentType {
+export interface commentType {
   name: string
   body: string
   date: Date
   id: number
 }
+
+export type commentInputType = Omit<commentType, 'id' | 'date'>
