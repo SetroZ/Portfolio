@@ -17,6 +17,7 @@
     "@react-three/drei": "^9.88.14",
     "@react-three/fiber": "^8.15.11",
     "@supabase/supabase-js": "^2.38.5",
+    "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.10",
     "nanoid": "^5.0.3",
     "next": "14.0.1",
@@ -24,7 +25,6 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-
     "react-simple-typewriter": "^5.0.1",
     "react-vertical-timeline-component": "^3.6.0",
     "remark-gfm": "^4.0.0",
