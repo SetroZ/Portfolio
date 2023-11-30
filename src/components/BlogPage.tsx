@@ -27,6 +27,7 @@ export function BlogPage({
       />
 
       <div className=' px-4 flex  w-full flex-col gap-1 '>
+        {data.image}
         {modify ? (
           <>
             <input
@@ -45,7 +46,7 @@ export function BlogPage({
           </>
         )}
 
-        <Link href='#comment' className='flex flex-row gap-2 w-auto h-auto'>
+        <Link href='#comment' className=' flex self-start flex-row gap-2 '>
           <Image
             className='invert'
             src='/comment.svg'
@@ -57,17 +58,19 @@ export function BlogPage({
         </Link>
       </div>
       <div className=' flex flex-col gap-6 w-[90%] lg:w-[60%]  '>
-        <article className='prose prose-invert break-words'>
+        <article className='  w-full prose prose-invert max-w-none  text-lg  tracking-wide leading-8'>
           {modify ? (
             <MDXRemote
-              source={`# Hello World
-            This is from Server Components!sdadadadadasssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            ## big man
-            
+              source={`        
+              Us Their all behold thing fish Don't kind our Form Wherein bearing said gives made spirit, there male which isn't so in said have heaven image, forth stars winged. Heaven. Green sea third god days saw. Beginning was subdue seas beast heaven. Two.
+
+              Him she'd fowl bearing cattle saying signs gathering meat after sixth tree Bring have set second. Fruitful whales fifth fill whales bring. Is after without firmament god.
+              
+              Have, two kind life tree dominion. God that appear that bring isn't Air day man fifth darkness evening spirit there seed. Us bring morning bring under. His there hath, you'll.
             `}
             />
           ) : (
-            <p className=' text-xl tracking-wide leading-8'>{data.body}</p>
+            <p className=''>{data.body}</p>
           )}
         </article>
         <hr className=' border-2 border-slate-300'></hr>

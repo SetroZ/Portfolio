@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { cookies } from 'next/headers'
-const key = process.env.POST_BLOG_SECRET
+import IsAdmin from './IsAdmin'
 export function middleware(request: NextRequest) {
-  if (cookies().get('password')?.value != key) {
+  if (IsAdmin() == false) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 }

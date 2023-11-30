@@ -19,7 +19,7 @@ export interface blogSubmitType {
   subtitle: string
 }
 export interface blogType {
-  id: number
+  id: string
   title: string
   body: string
   image: string

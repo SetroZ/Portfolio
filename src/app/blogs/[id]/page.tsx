@@ -1,7 +1,7 @@
 import { blogType } from '@/types'
 import prisma from '@/clients/Singleton'
 import { BlogPage } from '@/components/BlogPage'
-
+import IsAdmin from '@/IsAdmin'
 const blogId = async ({ params }: { params: { id: string } }) => {
   const data: blogType = await prisma.article.findFirst({
     include: {
@@ -12,12 +12,9 @@ const blogId = async ({ params }: { params: { id: string } }) => {
         equals: parseInt(params.id),
       },
     },
-    cacheStrategy: {
-      ttl: 21600,
-    },
   })
 
-  return <BlogPage data={data} modify={false} />
+  return <BlogPage data={data} modify={IsAdmin() ? true : false} />
 }
 
 export default blogId
