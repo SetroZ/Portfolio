@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CommentType } from '@/types'
+import { commentType } from '@/types'
 const months = [
   'Jan',
   'Feb',

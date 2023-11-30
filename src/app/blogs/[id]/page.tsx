@@ -16,7 +16,8 @@ const blogId = async ({ params }: { params: { id: string } }) => {
       ttl: 21600,
     },
   })
-  return <BlogPage data={data} modify={true} />
+
+  return <BlogPage data={data} modify={false} />
 }
 
 export default blogId

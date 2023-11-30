@@ -16,7 +16,6 @@ const NavBar = () => {
   )
   const [scrolled, setScrolled] = useState(false)
   const toMap = pathname == '/' ? Buttons : Buttons2
-  console.log(pathname)
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY

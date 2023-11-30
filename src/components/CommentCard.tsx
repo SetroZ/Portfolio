@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CommentType } from '@/types'
+import { commentType } from '@/types'
 const formatDate = (date: Date) => {
   return (
     date.getDate() +
@@ -9,7 +9,7 @@ const formatDate = (date: Date) => {
     (date.getFullYear() % 100)
   )
 }
-const CommentCard = ({ name, body, date }: CommentType) => {
+const CommentCard = ({ name, body, date }: commentType) => {
   return (
     <div className='  flex flex-col gap-1 bg-zinc-900 p-3 rounded-lg '>
       <div className='flex items-center gap-3'>

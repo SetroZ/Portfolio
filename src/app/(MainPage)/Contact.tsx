@@ -87,7 +87,6 @@ const Contact = () => {
       }
     }
 
-    console.log(checked)
 
     if (checked === 4) {
       setSend('Sending...')

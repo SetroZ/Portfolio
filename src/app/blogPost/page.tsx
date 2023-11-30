@@ -14,11 +14,10 @@ export default function Login() {
     image: '',
     subtitle: '',
   })
-  console.log('image')
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(formData)
+
     setFormData((prevState) => {
       return {
         ...prevState,
@@ -35,7 +34,6 @@ export default function Login() {
       body: JSON.stringify({ ...formData, image: formData.image!.name }),
     })
     const data = await result.json()
-    console.log(data)
 
     const { error } = await supabase.storage.from('Images').uploadToSignedUrl(
       data.link.path,
@@ -44,7 +42,7 @@ export default function Login() {
         type: formData.image.type,
       })
     )
-    console.log(error)
+
   }
   return (
     <main className='flex flex-col justify-center items-center   w-full h-full'>

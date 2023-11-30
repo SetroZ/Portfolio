@@ -1,12 +1,11 @@
 'use client'
 
+import { commentInputType } from '@/types'
 import { useState } from 'react'
 
-const CommentInput = ({ blogId }: { blogId: number }) => {
-  const [formData, setFormData] = useState<{
-    name: string
-    body: string
-  }>({
+const CommentInput = ({ blogId }: { blogId: string }) => {
+  console.log(blogId)
+  const [formData, setFormData] = useState<commentInputType>({
     name: '',
     body: '',
   })
@@ -21,6 +20,7 @@ const CommentInput = ({ blogId }: { blogId: number }) => {
     })
   }
   const handleSubmit = () => {
+
     const res = fetch(`/api/comments/${blogId}`, {
       method: 'POST',
       body: JSON.stringify(formData),

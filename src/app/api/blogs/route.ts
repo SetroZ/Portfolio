@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
     }
     const formData: blogSubmitType = await req.json()
     const name = `Blogs/${nanoid()}.webp`
-    console.log(name)
     const { data, error } = await supabase.storage
       .from('Images')
       .createSignedUploadUrl(name)
