@@ -14,7 +14,7 @@ const blogId = async ({ params }: { params: { id: string } }) => {
     },
   })
 
-  return <BlogPage data={data} modify={IsAdmin() ? true : false} />
+  return <BlogPage data={data} modify={false} />
 }
 
 export default blogId

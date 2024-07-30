@@ -91,28 +91,53 @@ export const experiences: experienceType[] = [
     date: '2020',
   },
 ]
-export const dummyData = [
-  {
-    id: 1,
-    title: "What's new in Flutter 3.16",
-    body: 'Welcome back to the quarterly Flutter stable release, this time for Flutter 3.16. This release sets Material 3 as the new default theme, brings a preview of Impeller to Android, allows adding extensions for DevTools, and much more! It also coincides with significant updates to the Flutter Casual Games ToolkitIn only three months since our last release, we’ve had 928 pull requests merged by 145 community members with 40 community members authoring their first commit to Flutter!Keep reading to learn about all the new additions and improvements the Flutter community has contributed to this latest release!',
-    image: '/test.webp',
-    subtitle:
-      'Material 3 by default, Impeller preview for Android, DevTools extensions, and much more',
-    date: '2021',
-    comments: [
-      { name: 'John Doe'},
-      { name: 'Jane Smith' },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Sample Article 2',
-    body: 'This is the body of the second article.',
-    comments: [
-      { name: 'Alice Johnson' },
-      { name: 'Bob Williams' },
-    ],
-  },
-  // Add more articles as needed
-]
+export const dummyArticle = {
+  id: 4,
+  date: '2023-11-21T08:33:20.532Z',
+  title: "What's new in Flutter 3.16",
+  subtitle:
+    'Material 3 by default, Impeller preview for Android, DevTools extensions, and much more',
+  body: `  Us Their all behold thing fish Don't kind our Form Wherein bearing said gives made spirit, there male which isn't so in said have heaven image, forth stars winged. Heaven. Green sea third god days saw. Beginning was subdue seas beast heaven. Two.
+
+    Him she'd fowl bearing cattle saying signs gathering meat after sixth tree Bring have set second. Fruitful whales fifth fill whales bring. Is after without firmament god.
+    
+    Have, two kind life tree dominion. God that appear that bring isn't Air day man fifth darkness evening spirit there seed. Us bring morning bring under. His there hath, you'll.`,
+  image: '/test.webp',
+  Comment: [
+    {
+      id: 1,
+      date: new Date('2023-11-22T03:44:16.113Z'),
+      name: 'Joe Doe',
+      article_id: 4,
+      body: 'Great Article. I really like the new design! Good job',
+    },
+    {
+      id: 2,
+      date: new Date('2023-11-22T03:55:06.144Z'),
+      name: 'John Cena',
+      article_id: 4,
+      body: 'You cant see me my time is now',
+    },
+    {
+      id: 3,
+      date: new Date('2023-11-30T03:57:25.949Z'),
+      name: 'ddd',
+      article_id: 4,
+      body: 'ddd',
+    },
+    {
+      id: 6,
+      date: new Date('2023-11-30T04:54:08.460Z'),
+      name: 'my man',
+      article_id: 4,
+      body: 'hello world',
+    },
+    {
+      id: 7,
+      date: new Date('2023-11-30T04:54:14.609Z'),
+      name: 'test',
+      article_id: 4,
+      body: 'test',
+    },
+  ],
+}

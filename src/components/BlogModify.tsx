@@ -1,4 +1,3 @@
-
 'use client'
 import Link from 'next/link'
 import CommentCard from '@/components/CommentCard'
@@ -7,12 +6,10 @@ import { blogType } from '@/types'
 import CustomButton from './CustomButton'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import CommentInput from './CommentInput'
-import { BodyInput, ButtonModify, TitleInputs } from './Inputs'
-export function BlogPage({
+function BlogModify({
   data,
-  modify,
+  modify = false,
   handleChange,
-  handleModify,
 }: {
   data: blogType
   modify: boolean
@@ -20,10 +17,7 @@ export function BlogPage({
   handleChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void
-  handleSubmit?: (e: React.FormEvent) => Promise<void>
-  handleModify?: Function
 }) {
-  console.log(data)
   return (
     <main className='mt-32  flex justify-center items-center flex-col gap-4'>
       <Image
@@ -36,20 +30,16 @@ export function BlogPage({
       />
 
       <div className=' px-4 flex  w-full flex-col gap-1 lg:w-[75%] '>
-        {modify ? (
-          <TitleInputs
-            title={data.title}
-            subtitle={data.subtitle}
-            handleChange={handleChange}
-          />
-        ) : (
-          <>
-            <h1 className='text-2xl font-extrabold'>{data.title}</h1>
-            <h2 className='text-lg text-slate-300'>{data.subtitle}</h2>
-          </>
-        )}
-        {modify ?   <ButtonModify modify={modify} handleModify={handleModify} /> : '' }
-     
+        <input
+          value={data.title}
+          className='text-2xl font-extrabold bg-transparent'
+          onChange={(e) => handleChange(e)}
+        />
+        <input
+          value={data.subtitle}
+          className='text-lg text-slate-300 bg-transparent'
+        />
+
         <Link href='#comment' className=' flex self-start flex-row gap-2 '>
           <Image
             className='invert'
@@ -58,15 +48,23 @@ export function BlogPage({
             height={30}
             alt='comment'
           />
-          <p className='text-2xl'>{data.Comment?.length}</p>
+          <p className='text-2xl'>{data.Comment.length}</p>
         </Link>
       </div>
       <div className=' flex flex-col gap-6 w-[90%] lg:w-[60%]  '>
         <article className='  w-full prose prose-invert max-w-none  text-lg  tracking-wide leading-8'>
           {modify ? (
-            <BodyInput body={data.body} handleChange={handleChange} />
+            <MDXRemote
+              source={`        
+              Us Their all behold thing fish Don't kind our Form Wherein bearing said gives made spirit, there male which isn't so in said have heaven image, forth stars winged. Heaven. Green sea third god days saw. Beginning was subdue seas beast heaven. Two.
+
+              Him she'd fowl bearing cattle saying signs gathering meat after sixth tree Bring have set second. Fruitful whales fifth fill whales bring. Is after without firmament god.
+              
+              Have, two kind life tree dominion. God that appear that bring isn't Air day man fifth darkness evening spirit there seed. Us bring morning bring under. His there hath, you'll.
+            `}
+            />
           ) : (
-            <MDXRemote source={data.body} />
+            <p className=''>{data.body}</p>
           )}
         </article>
         <hr className=' border-2 border-slate-300'></hr>
@@ -74,7 +72,7 @@ export function BlogPage({
           <h2 className='text-3xl font-extrabold'>Comments</h2>
           <div className=' flex flex-col gap-4 mt-2 pb-3'>
             <CommentInput blogId={data.id} />
-            {data.Comment?.map((comment) => (
+            {data.Comment.map((comment) => (
               <CommentCard key={comment.id} {...comment} />
             ))}
           </div>
@@ -83,3 +81,4 @@ export function BlogPage({
     </main>
   )
 }
+export default BlogModify

@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import { commentType } from '@/types'
 const formatDate = (date: Date) => {
+  if (typeof(date) != 'Date') {
+    date = new Date(date)
+  }
   return (
     date.getDate() +
     '/' +
